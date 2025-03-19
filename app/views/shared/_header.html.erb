@@ -6,7 +6,22 @@
 
       <div class="space-x-8 text-gray-700">
         <% if user_signed_in? %>
-          <%= link_to current_user.name, new_user_registration_path, id:"dropDown", class: "transition-colors duration-300 hover:text-blue-500" %>
+          <details class="dropdown">
+            <summary class="btn btn-ghost m-1">
+              <div>
+                <p id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
+                <%= current_user.name %>
+                </p>
+              </div>
+            </summary>
+            <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+              <li>            
+                <%= link_to "プロフィール", users_profile_path %>
+              </li>
+              <li><a>Item 1</a></li>
+              <li><a>Item 2</a></li>
+            </ul>
+          </details>
         <% else %>
           <%= link_to "ログイン", new_user_session_path, class: "transition-colors duration-300 hover:text-blue-500" %>
           <%= link_to "新規登録", new_user_registration_path, class: "transition-colors duration-300 hover:text-blue-500" %>

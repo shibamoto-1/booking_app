@@ -1,0 +1,13 @@
+
+<div>
+  <p>名前</p>
+  <p><%= @user.name %></p>
+</div>
+<div>
+  <p>自己紹介</p>
+  <p><%= @user.profile %></p>
+</div>
+
+<%= link_to "編集", users_profile_edit_path, class: "btn btn-primary" %>
+
+<%= link_to "アカウント", users_account_path, class: "btn" %>
