@@ -1,6 +1,7 @@
 <div>
-  <h1 class="font-bold text-4xl">Rooms#search</h1>
-  <p class="text-blue-600">Find me in app/views/rooms/search.html.erb</p>
-
+  <%= form_with url: rooms_path, method: :get do |f| %>
+    <%= f.text_field :q, placeholder: "検索ワード", class: "input" %>
+    <%= f.submit "検索", class: "btn" %>
+  <% end %>
   <%= link_to "施設一覧", rooms_path %>
 </div>

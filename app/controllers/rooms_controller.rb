@@ -1,9 +1,9 @@
 class RoomsController < ApplicationController
-  def index
-    @rooms = Room.all
+  def search
   end
 
-  def search
+  def index
+    @rooms = Room.query(params[:q])
   end
 
   def own
