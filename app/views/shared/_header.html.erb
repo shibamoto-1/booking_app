@@ -18,8 +18,12 @@
               <li>            
                 <%= link_to "プロフィール", users_profile_path %>
               </li>
-              <li><a>Item 1</a></li>
-              <li><a>Item 2</a></li>
+              <li>
+                <%= link_to "施設の登録", new_room_path %>
+              </li>
+              <li>
+                <%= link_to "作成施設一覧", rooms_path %>
+              </li>
             </ul>
           </details>
         <% else %>

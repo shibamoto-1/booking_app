@@ -1,4 +1,23 @@
-<div>
-  <h1 class="font-bold text-4xl">Rooms#new</h1>
-  <p>Find me in app/views/rooms/new.html.erb</p>
-</div>
+<h1>施設作成</h1>
+<%= form_with model: @room do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :fee %>
+    <%= f.text_field :fee %>
+  </div>
+  <div>
+    <%= f.label :introduction %>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <%= f.submit "登録" %>
+<% end %>
+
+<%= link_to "戻る", :back %>
