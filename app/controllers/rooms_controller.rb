@@ -6,6 +6,10 @@ class RoomsController < ApplicationController
   def search
   end
 
+  def own
+    @rooms = current_user.rooms
+  end
+
   def new
     @room = Room.new
   end
@@ -35,8 +39,8 @@ class RoomsController < ApplicationController
       flash[:info] = "更新しました"
       redirect_to room_path(@room.id)
     else
-      falsh.now[:error] = "失敗しました"
-      render :edit, status: :unprocessable_entity
+      flash.now[:error] = "失敗しました"
+      render :edit
     end
   end
 
