@@ -1,14 +1,11 @@
-<div class="card bg-base-100 w-96 shadow-sm">
-  <%
-=begin%>
- <figure class="px-10 pt-10">
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes"
-      class="rounded-xl" />
+<div class="card bg-green-100 w-96 shadow-sm">
+  <figure class="px-10 pt-10">
+    <% if room.image.attached? %>
+      <%= image_tag room.image, class: "rounded-xl" %>
+    <% else %>
+      <%= image_tag "room_image.png" %>
+    <% end %>
   </figure> 
-<%
-=end%>
   <div class="card-body items-center text-center">
     <h2 class="card-title"><%= room.name %></h2>
     <p><%= room.address %></p>

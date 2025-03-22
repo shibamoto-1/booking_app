@@ -8,10 +8,15 @@
         <% if user_signed_in? %>
           <details class="dropdown">
             <summary class="btn btn-ghost m-1">
-              <div>
-                <p id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
+              <div class="flex space-x-3 items-center">
+                <% if current_user.avater.attached? %>
+                  <%= image_tag current_user.avater, class: "w-12 h-12 object-cover rounded-full" %>
+                <% else %>
+                  <%= image_tag "default_avater.png" %>
+                <% end %>
+                <span id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
                 <%= current_user.name %>
-                </p>
+                </span>
               </div>
             </summary>
             <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">

@@ -1,5 +1,9 @@
 <%= form_with model: @user, url: users_profile_update_path do |f| %>
   <div>
+    <%= f.label :avater %>
+    <%= f.file_field :avater %>
+  </div>
+  <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>

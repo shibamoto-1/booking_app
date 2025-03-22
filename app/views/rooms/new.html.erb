@@ -1,6 +1,10 @@
 <h1>施設作成</h1>
 <%= form_with model: @room do |f| %>
   <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
