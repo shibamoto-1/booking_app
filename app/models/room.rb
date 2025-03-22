@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
-  has_many :users
+  has_many :users, through: :reservations
+  has_many :reservations, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true

@@ -1,0 +1,29 @@
+<div class="mb-2">
+  <div class="flex space-x-5">
+    <div><%= reservation.room.name %></div>
+    <div><%= reservation.room.introduction %></div>
+    <div><%= "#{total_fee(reservation)}¥" %></div>
+    <div><%= reservation.check_in_date %></div>
+    <div><%= reservation.check_out_date %></div>
+    <div><%= reservation.created_at %></div>
+    <div>
+      <details class="dropdown">
+        <summary class="btn btn-ghost m-1">
+          <div>
+            <p id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
+              三点リーダー
+            </p>
+          </div>
+        </summary>
+        <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+          <li>            
+            <%= link_to "再予約", edit_reservation_path(reservation.id) %>
+          </li>
+          <li>
+            <%= link_to "予約取り消し", reservation_path(reservation.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-red-500" %>
+          </li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</div>

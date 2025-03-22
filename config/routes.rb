@@ -12,5 +12,10 @@ Rails.application.routes.draw do
   
   get "rooms/own", to: "rooms#own"
   resources :rooms
+  
+  scope(path_names: { new: "confirm" }) do
+    resources :reservations, except: [:show]
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

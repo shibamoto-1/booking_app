@@ -6,5 +6,13 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :rooms, dependent: :destroy
+  has_many :rooms, through: :reservations
+  has_many :reservations, dependent: :destroy
+  before_destroy :destroy_rooms
+
+  private
+  def destroy_rooms
+    rooms.destroy_all
+  end
+  
 end
