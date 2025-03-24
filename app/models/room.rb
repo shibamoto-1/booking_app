@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
+  before_create :default_image
+
   belongs_to :user
   has_many :reservations, dependent: :destroy
   has_many :users, through: :reservations
@@ -20,6 +22,14 @@ class Room < ApplicationRecord
     where("name LIKE ?", "%#{sanitize_sql_like(q)}%")
       .or(where("introduction LIKE ?", "%#{sanitize_sql_like(q)}%"))
   }
+
+  def default_image
+    if !self.image.attached?
+      self.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'room_image.png')),
+      filename: 'room_image.png',
+      content_type: 'image/png')
+    end
+  end
 
   def check_fee_minimum
     errors.add(:fee, "金額は1円以上に設定してください") if fee.nil? || fee < 1

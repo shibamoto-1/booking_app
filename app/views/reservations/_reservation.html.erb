@@ -1,13 +1,16 @@
-<div class="mb-2">
-  <div class="flex space-x-5">
-    <div><%= reservation.room.name %></div>
-    <div><%= reservation.room.introduction %></div>
-    <div><%= "#{total_fee(reservation)}¥" %></div>
-    <div><%= reservation.check_in_date %></div>
-    <div><%= reservation.check_out_date %></div>
-    <div><%= reservation.created_at %></div>
-    <div>
-      <details class="dropdown">
+
+
+<div>
+  <tr>
+    <td><%= image_tag reservation.room.image %></td>
+    <td><%= reservation.room.name %></td>
+    <td><%= reservation.room.introduction %></td>
+    <td><%= "#{total_fee(reservation)}¥" %></td>
+    <td><%= reservation.check_in_date %></td>
+    <td><%= reservation.check_out_date %></td>
+    <td><%= reservation.created_at %></td>
+    <td>
+          <details class="dropdown">
         <summary class="btn btn-ghost m-1">
           <div>
             <p id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
@@ -24,6 +27,8 @@
           </li>
         </ul>
       </details>
-    </div>
-  </div>
+
+    </td>
+    <td></td>
+  </tr>
 </div>
