@@ -1,6 +1,12 @@
 class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new(reservation_params)
+    @room = Room.find(@reservation.room_id)
+
+    unless @reservation.valid?
+      render "rooms/show"
+      return
+    end
   end
 
   def index

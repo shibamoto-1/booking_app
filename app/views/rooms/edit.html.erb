@@ -1,32 +1,35 @@
-<div>
-  <p class="text-xl font-bold">施設編集</p>
+<div class="my-20 mx-10">
+  <div class="w-1/2 mx-auto border-2 rounded-md p-5">
+    <p class="text-2xl">施設情報の編集</p>
 
-  <%= form_with model: @room do |f| %>
-    <div>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
+    <div class="mt-10 mb-5">
+      <%= form_with model: @room do |f| %>
+        <div class="space-y-6 mb-5">
+          <div class="flex justify-between">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "input" %>
+          </div>
+          <div class="flex justify-between">
+            <%= f.label :address %>
+            <%= f.text_field :address, class: "input" %>
+          </div> 
+          <div class="flex justify-between"> 
+            <%= f.label :fee %>
+            <%= f.text_field :fee, class: "input" %>
+          </div>
+          <div class="flex justify-between">
+            <%= f.label :introduction %>
+            <%= f.text_area :introduction, class: "input" %>
+          </div>
+          <div class="flex justify-between">
+            <%= f.label :image %>
+            <%= f.file_field :image, class: "file-input" %>
+          </div>
+        </div>
+        <%= f.submit "更新", class: "btn btn-primary w-1/6" %>
+      <% end %>
     </div>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <%= f.label :address %>
-      <%= f.text_field :address %>
-    </div>
-    <div>
-      <%= f.label :fee %>
-      <%= f.text_field :fee %>
-    </div>
-    <div>
-      <%= f.label :introduction %>
-      <%= f.text_area :introduction %>
-    </div>
-    
-    <%= f.submit "更新", class: "btn btn-primary" %>
-  <% end %>
 
-  <%= link_to "削除", @room, method: :delete, data: {confirm: "削除しますか" } %>
-
-  <%= link_to "戻る", :back %>
+    <%= link_to "キャンセル", :back, class: "btn w-1/6 text-xs" %>
+  </div>
 </div>

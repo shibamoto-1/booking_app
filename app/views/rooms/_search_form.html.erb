@@ -1,0 +1,9 @@
+<div class="bg-stone-300 h-24 flex items-center justify-center">
+  <%= form_with url: rooms_path, method: :get do |f| %>
+    <div class="flex justify-center space-x-6 items-center">
+        <%= f.text_field :area_q, placeholder: "エリア名を入力", class: "input" %>
+        <%= f.text_field :room_cq, placeholder: "フリーワード検索", class: "input" %>
+        <%= f.submit "検索", class: "btn" %>
+    </div>
+  <% end %>
+</div>

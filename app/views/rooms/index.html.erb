@@ -1,8 +1,11 @@
-<div>
-  <h1>施設一覧</h1>
-
-  <p><%= "#{ @rooms.count }件見つかりました" %></p>
-  <div class="flex justify-around">
+<div class="w-screen">
+  <%= render "search_form" %>
+  <div class="my-10 mx-12">
+    <p class="text-2xl">
+      <span class="font-semibold"><%= @rooms.count %></span> 件見つかりました
+    </p>
+  </div>
+  <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 px-10">
     <%= render @rooms %>
   </div>
 </div>

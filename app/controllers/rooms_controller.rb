@@ -3,7 +3,7 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.query(params[:q])
+    @rooms = Room.area_query(params[:area_q]).room_query(params[:room_q])
   end
 
   def own

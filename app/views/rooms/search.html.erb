@@ -1,7 +1,44 @@
-<div>
-  <%= form_with url: rooms_path, method: :get do |f| %>
-    <%= f.text_field :q, placeholder: "検索ワード", class: "input" %>
-    <%= f.submit "検索", class: "btn" %>
-  <% end %>
-  <%= link_to "施設一覧", rooms_path %>
+<div class="w-full py-16 shadow-md">
+  <div class="w-80 mx-auto">
+    <%= form_with url: rooms_path, method: :get do |f| %>
+        <%= f.text_field :area_q, placeholder: "エリア名を入力", class: "input mb-5" %>
+        <%= f.submit "検索", class: "btn w-full" %>
+    <% end %>
+  </div>
+</div>
+<div class="mx-28 my-24">
+  <h1 class="text-3xl mb-20">おすすめエリア</h1>
+  <div class="grid grid-cols-3 gap-6">
+    <div class="h-96 w-64 relative">
+      <%= link_to rooms_path(area_q: "東京") do %>
+        <%= image_tag 'Tokyo.jpg', class: "h-full object-cover rounded-3xl" %>
+      <% end %>
+      <div class="absolute bottom-6 left-5">
+        <p class="text-white text-2xl font-semibold">東京</p>
+      </div>
+    </div>
+    <div class="h-96 w-64 relative">
+      <%= link_to rooms_path(area_q: "大阪") do %>
+        <%= image_tag 'Osaka.jpg', class: "h-full object-cover rounded-3xl" %>
+      <% end %>
+      <div class="absolute bottom-6 left-5">
+        <p class="text-white text-2xl font-semibold">大阪</p>
+      </div>
+    </div>
+    <div class="h-96 w-64 relative">
+      <%= link_to rooms_path(area_q: "京都") do %>
+        <%= image_tag 'Kyoto.jpg', class: "h-full object-cover rounded-3xl" %>
+      <% end %>
+      <div class="absolute bottom-6 left-5">
+        <p class="text-white text-2xl font-semibold">京都</p>
+      </div>
+    </div>
+    <div class="h-96 w-64 relative">
+      <%= link_to rooms_path(area_q: "札幌") do %>
+        <%= image_tag 'Sapporo.jpg', class: "h-full object-cover rounded-3xl" %>
+      <% end %>
+      <div class="absolute bottom-6 left-5">
+        <p class="text-white text-2xl font-semibold">札幌</p>
+      </div>
+    </div>
 </div>
