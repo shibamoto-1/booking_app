@@ -7,11 +7,7 @@
 
   <div class="flex justify-between mx-10">
     <div class="w-2/5">
-      <% if @room.image.attached? %>
-        <%= image_tag @room.image %>
-      <% else %>
-        <%= image_tag "room_image.png" %>
-      <% end %>
+      <%= image_tag @room.image %>
     </div>
 
     <div class="border-4 rounded-lg py-10 px-5 w-[55%]">
