@@ -1,14 +1,11 @@
-
-
-<div>
-  <tr>
-    <td><%= image_tag reservation.room.image, class: "size-1/3" %></td>
-    <td><%= reservation.room.name %></td>
-    <td><%= reservation.room.introduction %></td>
-    <td><%= "#{total_fee(reservation)}¥" %></td>
-    <td><%= reservation.check_in_date %></td>
-    <td><%= reservation.check_out_date %></td>
-    <td><%= reservation.created_at %></td>
+  <tr class="border-b">
+    <td class="py-4"><%= image_tag reservation.room.image, class: "w-24" %></td>
+    <td class="py-4"><%= reservation.room.name %></td>
+    <td class="py-4"><%= reservation.room.introduction %></td>
+    <td class="py-4">¥<%= total_fee(reservation).to_s(:delimited) %></td>
+    <td class="py-4"><%= reservation.check_in_date %></td>
+    <td class="py-4"><%= reservation.check_out_date %></td>
+    <td class="py-4"><%= reservation.created_at %></td>
     <td>
       <details class="dropdown">
         <summary class="btn btn-ghost m-1">
@@ -30,4 +27,3 @@
     </td>
     <td></td>
   </tr>
-</div>

@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   has_many :reservations, dependent: :destroy
   has_many :rooms, through: :reservations
-  has_many :rooms
   before_destroy :destroy_rooms
   has_one_attached :avater
   
