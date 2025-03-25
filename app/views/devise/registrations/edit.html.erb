@@ -1,7 +1,7 @@
 <div class="container mx-auto pt-28 px-24">
   <div class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
 
-    <h2 class="text-xl py-5">Edit <%= resource_name.to_s.humanize %></h2>
+    <h2 class="text-xl py-5">アカウント編集</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -16,7 +16,7 @@
       <% end %>
 
       <div class="pb-5">
-        <%= f.label :password, class: "fieldset-label"  %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.label :password, class: "fieldset-label"  %> <i>(変更する場合のみ)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
         <% if @minimum_password_length %>
           <br />
@@ -25,24 +25,27 @@
       </div>
 
       <div class="pb-5">
-        <%= f.label :password_confirmation, class: "fieldset-label"  %><br />
+        <%= f.label :password_confirmation, class: "fieldset-label"  %><i>(変更する場合のみ)</i><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
       </div>
 
       <div class="pb-5">
-        <%= f.label :current_password, class: "fieldset-label"  %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.label :current_password, class: "fieldset-label" %>
         <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Update", class: "btn btn-neutral mt-4" %>
+        <%= f.submit "更新", class: "btn btn-neutral mt-4" %>
       </div>
     <% end %>
 
     <h3 class="text-lg pt-5">アカウント削除</h3>
 
-    <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn btn-neutral mt-4" %></div>
+    <div><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-error mt-4" %></div>
 
-    <%= link_to "Back", :back %>
+    <h3 class="text-lg pt-5">キャンセル</h3>
+    <div>
+    <%= link_to "キャンセル", :back, class: "mt-4 btn" %>
+    </div>
   </div>
 </div>
