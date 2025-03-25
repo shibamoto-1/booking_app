@@ -61,3 +61,5 @@ gem "tailwindcss-rails", "~> 2.5"
 gem "devise", "~> 4.9"
 
 gem "tailwindcss-ruby", "~> 4.0"
+
+gem "rails-i18n", "~> 6.0"

@@ -3,9 +3,9 @@
     <td class="py-4"><%= reservation.room.name %></td>
     <td class="py-4"><%= reservation.room.introduction %></td>
     <td class="py-4">¥<%= total_fee(reservation).to_s(:delimited) %></td>
-    <td class="py-4"><%= reservation.check_in_date %></td>
-    <td class="py-4"><%= reservation.check_out_date %></td>
-    <td class="py-4"><%= reservation.created_at %></td>
+    <td class="py-4"><%= l(reservation.check_in_date, format: :default) %></td>
+    <td class="py-4"><%= l(reservation.check_out_date, format: :default) %></td>
+    <td class="py-4"><%= l(reservation.created_at, format: :long) %></td>
     <td>
       <details class="dropdown">
         <summary class="btn btn-ghost m-1">

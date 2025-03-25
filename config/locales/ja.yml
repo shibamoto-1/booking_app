@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      user: "ユーザー"
+      room: "施設"
+      reservation: "予約"
+    attributes:
+      user:
+        name: "名前"
+        profile: "自己紹介"
+        avater: "アバター"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      room:
+        name: "名前"
+        fee: "料金"
+        address: "住所"
+        introduction: "説明文"
+        image: "画像"
+      reservation:
+        check_in_date: "チェックイン日"
+        check_out_date: "チェックアウト日"
+        member_count: "人数"
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y/%m/%d %H:%M"
