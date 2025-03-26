@@ -6,23 +6,38 @@
       <%= form_with model: @room do |f| %>
         <div class="space-y-6 mb-5">
           <div class="flex justify-between">
-            <%= f.label :name %>
-            <%= f.text_field :name, class: "input" %>
+            <%= f.label :name, class: "" %>
+            <div class="flex flex-col">
+              <%= f.text_field :name, class: "input w-80" %>
+              <% if @room.errors.include?(:name) %>
+                <p class="text-sm text-red-500"><%= @room.errors.full_messages_for(:name).first %></p>
+              <% end %>
+            </div>
           </div>
           <div class="flex justify-between">
-            <%= f.label :address %>
-            <%= f.text_field :address, class: "input" %>
+            <%= f.label :address, class: "" %>
+            <div class="flex flex-col">
+              <%= f.text_field :address, class: "input w-80" %>
+              <% if @room.errors.include?(:address) %>
+                <p class="text-sm text-red-500"><%= @room.errors.full_messages_for(:address).first %></p>
+              <% end %>
+            </div>
           </div> 
           <div class="flex justify-between"> 
-            <%= f.label :fee %>
-            <%= f.text_field :fee, class: "input" %>
+            <%= f.label :fee, class: "" %>
+            <div class="flex flex-col">
+              <%= f.text_field :fee, class: "input w-80" %>
+              <% if @room.errors.include?(:fee) %>
+                <p class="text-sm text-red-500"><%= @room.errors.full_messages_for(:fee).first %></p>
+              <% end %>
+            </div>
           </div>
           <div class="flex justify-between">
-            <%= f.label :introduction %>
+            <%= f.label :introduction, class: "" %>
             <%= f.text_area :introduction, class: "input" %>
           </div>
           <div class="flex justify-between">
-            <%= f.label :image %>
+            <%= f.label :image, class: "" %>
             <%= f.file_field :image, class: "file-input" %>
           </div>
         </div>

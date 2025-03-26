@@ -32,7 +32,7 @@ class Room < ApplicationRecord
   end
 
   def check_fee_minimum
-    errors.add(:fee, "金額は1円以上に設定してください") if fee.nil? || fee < 1
+    errors.add(:fee, "は1円以上に設定してください") if fee.nil? || fee < 1
   end
 
 end

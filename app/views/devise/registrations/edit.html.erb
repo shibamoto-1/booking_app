@@ -4,11 +4,12 @@
     <h2 class="text-xl py-5">アカウント編集</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-
       <div class="pb-5">
         <%= f.label :email, class: "fieldset-label" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+        <% if resource.errors.include?(:email) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:email).first %></p>
+        <% end %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -22,16 +23,25 @@
           <br />
           <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
+                <% if resource.errors.include?(:password) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:password).first %></p>
+        <% end %>
       </div>
 
       <div class="pb-5">
         <%= f.label :password_confirmation, class: "fieldset-label"  %><i>(変更する場合のみ)</i><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+                <% if resource.errors.include?(:password_confirmation) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:password_confirmation).first %></p>
+        <% end %>
       </div>
 
       <div class="pb-5">
         <%= f.label :current_password, class: "fieldset-label" %>
         <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
+                <% if resource.errors.include?(:current_password) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:email).first %></p>
+        <% end %>
       </div>
 
       <div class="actions">

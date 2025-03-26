@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
       redirect_to room_path(@room.id)
     else
       flash.now[:error] = "失敗しました"
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

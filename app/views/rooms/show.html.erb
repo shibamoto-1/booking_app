@@ -24,29 +24,35 @@
         <p class="opacity-90"><%= @room.introduction %></p>
       </div>
 
-      <div class="mt-10 border-2 py-8 px-2 bg-blue-50">
+      <div class="mt-10 border-2 py-8 px-10 bg-blue-50">
         <%= form_with model: @reservation, url: new_reservation_path, method: :get do |f| %>
           <%= f.hidden_field :room_id, value: @room.id %>
-          <div class="flex flex-col items-center w-full">
-            <div class="flex space-x-14 mb-10">
-              <div class="flex flex-col">
-                <%= f.label :check_in_date %>
+          <div class="flex justify-between mb-10">
+            <div class="flex flex-col w-48 text-wrap">
+              <%= f.label :check_in_date, class: "" %>
                 <%= f.date_field :check_in_date, class: "input" %>
-              </div>
-              <div class="flex flex-col">
-                <%= f.label :check_out_date %>
-                <%= f.date_field :check_out_date, class: "input" %>
-              </div>
-              <div class="flex flex-col">
-                <%= f.label :member_count %>
-                <%= f.text_field :member_count, class: "input" %>
-              </div>
+                <% if @reservation.errors.include?(:check_in_date) %>
+                  <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:check_in_date).first %></p>
+                <% end %>
             </div>
-            <%= f.submit "予約する", class: "btn btn-info w-full mx-auto h-12" %>
+            <div class="flex flex-col w-48 text-wrap">
+              <%= f.label :check_out_date, class: "" %>
+                <%= f.date_field :check_out_date, class: "input w-full" %>
+                <% if @reservation.errors.include?(:check_out_date) %>
+                  <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:check_out_date).first %></p>
+                <% end %>
+            </div>
+            <div class="flex flex-col w-48 text-wrap">
+              <%= f.label :member_count, class: "" %>
+                <%= f.text_field :member_count, class: "input w-full" %>
+                <% if @reservation.errors.include?(:member_count) %>
+                  <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:member_count).first %></p>
+                <% end %>
+            </div>
           </div>
+          <%= f.submit "予約する", class: "btn btn-info w-full mx-auto h-12" %>
         <% end %>
       </div>
     </div>
   </div>
-
 </div>

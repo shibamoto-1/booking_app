@@ -10,7 +10,8 @@ class Users::ProfileController < ApplicationController
   end
 
   def update
-    if current_user.update(profile_params)
+    @user = current_user
+    if @user.update(profile_params)
       redirect_to users_profile_path, notice: 'プロフィール情報が更新されました'
     else
       render :edit

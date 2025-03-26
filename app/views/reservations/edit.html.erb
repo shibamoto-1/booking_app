@@ -19,15 +19,31 @@
         <div class="space-y-5">
           <div class="flex justify-between">
             <%= f.label :check_in_date %>
-            <%= f.date_field :check_in_date, class: "input" %>
+            <div class="w-1/3">
+              <%= f.date_field :check_in_date, class: "input" %>
+              <% if @reservation.errors.include?(:check_in_date) %>
+                <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:check_in_date).first %></p>
+              <% end %>
+            </div>
           </div>
           <div class="flex justify-between">
             <%= f.label :check_out_date %>
-            <%= f.date_field :check_out_date, class: "input" %>
+            <div class="w-1/3">
+              <%= f.date_field :check_out_date, class: "input" %>
+              <% if @reservation.errors.include?(:check_out_date) %>
+                <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:check_out_date).first %></p>
+              <% end %>
+            </div>
           </div>
           <div class="flex justify-between">
             <%= f.label :member_count %>
-            <%= f.text_field :member_count, class: "input" %>
+            <div class="w-1/3">
+              <%= f.text_field :member_count, class: "input" %>
+              <% if @reservation.errors.include?(:member_count) %>
+                <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:member_count).first %></p>
+              <% end %>
+
+            </div>
           </div>
           <div class="flex flex-col space-y-5"> 
             <%= f.submit "再予約する", class: "btn btn-primary" %>

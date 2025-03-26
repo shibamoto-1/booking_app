@@ -7,8 +7,13 @@
         <div class="space-y-6 mb-5">
           <div class="flex justify-between">
             <%= f.label :name %>
-            <%= f.text_field :name, class: "input" %>
-          </div> 
+            <div class="flex flex-col">
+              <%= f.text_field :name, class: "input w-80" %>
+              <% if @user.errors.include?(:name) %>
+                <p class="text-sm text-red-500"><%= @user.errors.full_messages_for(:name).first %></p>
+              <% end %>
+            </div>
+          </div>
           <div class="flex justify-between">
             <%= f.label :profile %>
             <%= f.text_area :profile, class: "input" %>
