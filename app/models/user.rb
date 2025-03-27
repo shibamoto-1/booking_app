@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_create :default_image
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +14,14 @@ class User < ApplicationRecord
   has_one_attached :avater
   
   private
+  def default_image
+    if !self.avater.attached?
+      self.avater.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'default_avater.png')),
+      filename: 'default_avater.png',
+      content_type: 'image/png')
+    end
+  end
+
   def destroy_rooms
     rooms.destroy_all
   end

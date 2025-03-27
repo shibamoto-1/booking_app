@@ -9,11 +9,7 @@
           <details class="dropdown">
             <summary class="btn btn-ghost m-1">
               <div class="flex space-x-3 items-center">
-                <% if current_user.avater.attached? %>
-                  <%= image_tag current_user.avater, class: "w-12 h-12 object-cover rounded-full" %>
-                <% else %>
-                  <%= image_tag "default_avater.png" %>
-                <% end %>
+                <%= image_tag current_user.avater, class: "w-12 h-12 object-cover rounded-full" %>
                 <span id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
                 <%= current_user.name %>
                 </span>
