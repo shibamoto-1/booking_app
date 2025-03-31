@@ -1,0 +1,50 @@
+<div class="my-20 mx-10">
+  <div class="w-1/2 mx-auto border-2 rounded-md p-5">
+    <p class="text-2xl">施設作成</p>
+
+    <div class="mt-10 mb-5">
+      <%= form_with model: @room do |f| %>
+        <div class="space-y-6 mb-5">
+          <div class="flex justify-between">
+            <%= f.label :name, class: "" %>
+            <div class="flex flex-col">
+              <%= f.text_field :name, class: "input w-80" %>
+              <% if @room.errors.include?(:name) %>
+                <p class="text-sm text-red-500"><%= @room.errors.full_messages_for(:name).first %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <%= f.label :address, class: "" %>
+            <div class="flex flex-col">
+              <%= f.text_field :address, class: "input w-80" %>
+              <% if @room.errors.include?(:address) %>
+                <p class="text-sm text-red-500"><%= @room.errors.full_messages_for(:address).first %></p>
+              <% end %>
+            </div>
+          </div> 
+          <div class="flex justify-between"> 
+            <%= f.label :fee, class: "" %>
+            <div class="flex flex-col">
+              <%= f.text_field :fee, class: "input w-80" %>
+              <% if @room.errors.include?(:fee) %>
+                <p class="text-sm text-red-500"><%= @room.errors.full_messages_for(:fee).first %></p>
+              <% end %>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <%= f.label :introduction, class: "" %>
+            <%= f.text_area :introduction, class: "input" %>
+          </div>
+          <div class="flex justify-between">
+            <%= f.label :image, class: "" %>
+            <%= f.file_field :image, class: "file-input" %>
+          </div>
+        </div>
+        <%= f.submit "作成", class: "btn btn-primary w-1/6" %>
+      <% end %>
+    </div>
+
+    <%= link_to "キャンセル", :back, class: "btn w-1/6 text-xs" %>
+  </div>
+</div>

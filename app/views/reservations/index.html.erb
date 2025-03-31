@@ -1,0 +1,21 @@
+<div class="w-screen mx-10 my-20">
+  <h1 class="text-3xl mb-10">予約済み一覧</h1>
+
+  <table class="w-full">
+    <thead>
+      <tr class="border-b border-b-black text-left">
+        <th class="py-2">画像</th>
+        <th class="py-2">施設名</th>
+        <th class="py-2">紹介文</th>
+        <th class="py-2">合計料金</th>
+        <th class="py-2">チェックイン</th>
+        <th class="py-2">チェックアウト</th>
+        <th class="py-2">予約確定日時</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @reservations %>
+    </tbody>
+  </table>
+</div>

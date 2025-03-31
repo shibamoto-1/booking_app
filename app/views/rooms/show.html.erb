@@ -1,0 +1,58 @@
+<div class="w-screen">
+  <%= render "rooms/search_form" %>
+  <div class="mx-10 my-8  flex justify-between text-blue-500 font-medium text-xl">
+    <%= link_to "戻る", 'javascript:history.back()', class: "hover:text-blue-600" %>
+    <%= link_to "編集", edit_room_path(@room.id), class: "hover:text-blue-600" %>
+  </div>
+
+  <div class="flex justify-between mx-10">
+    <div class="w-2/5">
+      <%= image_tag @room.image %>
+    </div>
+
+    <div class="border-4 rounded-lg py-10 px-5 w-[55%]">
+      <div class="flex justify-between">
+        <div class="mb-10 space-y-3">
+          <p class="text-3xl opacity-60"><%= @room.name %></p>
+          <p class="opacity-60"><%= @room.address %></p>
+        </div>
+        <div>
+          <p class="text-2xl text-blue-500">¥<%= @room.fee.to_s(:delimited) %>~</p>
+        </div>
+      </div>
+      <div>
+        <p class="opacity-90"><%= @room.introduction %></p>
+      </div>
+
+      <div class="mt-10 border-2 py-8 px-10 bg-blue-50">
+        <%= form_with model: @reservation, url: new_reservation_path, method: :get do |f| %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <div class="flex justify-between mb-10">
+            <div class="flex flex-col w-48 text-wrap">
+              <%= f.label :check_in_date, class: "" %>
+                <%= f.date_field :check_in_date, class: "input" %>
+                <% if @reservation.errors.include?(:check_in_date) %>
+                  <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:check_in_date).first %></p>
+                <% end %>
+            </div>
+            <div class="flex flex-col w-48 text-wrap">
+              <%= f.label :check_out_date, class: "" %>
+                <%= f.date_field :check_out_date, class: "input w-full" %>
+                <% if @reservation.errors.include?(:check_out_date) %>
+                  <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:check_out_date).first %></p>
+                <% end %>
+            </div>
+            <div class="flex flex-col w-48 text-wrap">
+              <%= f.label :member_count, class: "" %>
+                <%= f.text_field :member_count, class: "input w-full" %>
+                <% if @reservation.errors.include?(:member_count) %>
+                  <p class="text-sm text-red-500"><%= @reservation.errors.full_messages_for(:member_count).first %></p>
+                <% end %>
+            </div>
+          </div>
+          <%= f.submit "予約する", class: "btn btn-info w-full mx-auto h-12" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

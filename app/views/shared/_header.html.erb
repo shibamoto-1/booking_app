@@ -1,0 +1,42 @@
+<nav class="bg-white shadow">
+  <div class="container w-screen px-4 py-6 mx-auto flex justify-between items-center">
+      <div class="flex items-center justify-between">
+        <%= link_to "宿泊予約サイト", "/", class: "text-2xl font-bold" %>
+      </div>
+
+      <div class="space-x-8 text-gray-700">
+        <% if user_signed_in? %>
+          <details class="dropdown">
+            <summary class="btn btn-ghost m-1">
+              <div class="flex space-x-3 items-center">
+                <%= image_tag current_user.avater, class: "w-12 h-12 object-cover rounded-full" %>
+                <span id="dropDown" class="transition-colors duration-300 hover:text-blue-500">
+                <%= current_user.name %>
+                </span>
+              </div>
+            </summary>
+            <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+              <li>            
+                <%= link_to "プロフィール", users_account_path %>
+              </li>
+              <li>
+                <%= link_to "施設の登録", new_room_path %>
+              </li>
+              <li>
+                <%= link_to "作成施設一覧", rooms_own_path %>
+              </li>
+              <li>
+                <%= link_to "予約一覧", reservations_path %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </details>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "transition-colors duration-300 hover:text-blue-500" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "transition-colors duration-300 hover:text-blue-500" %>
+        <% end %>
+      </div>
+  </div>
+</nav>

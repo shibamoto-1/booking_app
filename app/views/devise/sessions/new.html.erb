@@ -1,0 +1,21 @@
+<div class="container  mx-auto pt-28 px-24">
+  <div class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
+    <h2 class="text-xl py-5">ログイン</h2>
+    
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="pb-5">
+        <%= f.label :email, class: "fieldset-label pb-3" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+      </div>
+
+      <div class="pb-5">
+        <%= f.label :password, class: "fieldset-label pb-3" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

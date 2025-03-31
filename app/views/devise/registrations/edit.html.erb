@@ -1,0 +1,61 @@
+<div class="container mx-auto pt-28 px-24">
+  <div class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
+
+    <h2 class="text-xl py-5">アカウント編集</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="pb-5">
+        <%= f.label :email, class: "fieldset-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+        <% if resource.errors.include?(:email) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:email).first %></p>
+        <% end %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="pb-5">
+        <%= f.label :password, class: "fieldset-label"  %> <i>(変更する場合のみ)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+                <% if resource.errors.include?(:password) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:password).first %></p>
+        <% end %>
+      </div>
+
+      <div class="pb-5">
+        <%= f.label :password_confirmation, class: "fieldset-label"  %><i>(変更する場合のみ)</i><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
+                <% if resource.errors.include?(:password_confirmation) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:password_confirmation).first %></p>
+        <% end %>
+      </div>
+
+      <div class="pb-5">
+        <%= f.label :current_password, class: "fieldset-label" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "input" %>
+                <% if resource.errors.include?(:current_password) %>
+          <p class="text-sm text-red-500"><%= resource.errors.full_messages_for(:email).first %></p>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "更新", class: "btn btn-neutral mt-4" %>
+      </div>
+    <% end %>
+
+    <h3 class="text-lg pt-5">アカウント削除</h3>
+
+    <div><%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-error mt-4" %></div>
+
+    <h3 class="text-lg pt-5">キャンセル</h3>
+    <div>
+    <%= link_to "キャンセル", users_account_path, class: "mt-4 btn" %>
+    </div>
+  </div>
+</div>
